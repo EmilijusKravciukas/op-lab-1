@@ -4,7 +4,6 @@
 #include <vector>
 #include <fstream>
 #include "studentas.h"
-#include "evaluation.h"
 #include "writeResult.h"
 #include "inputCheck.h"
 #include <chrono>

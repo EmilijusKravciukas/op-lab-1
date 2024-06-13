@@ -11,4 +11,4 @@
 
 using namespace std;
 
-void studSort(vector<Studentas>& studentai, unsigned int m, int rikiavimas);
+void studSort(vector<Studentas>& studentai,  int rikiavimas);

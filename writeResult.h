@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void atvaizd(vector<Studentas>& studentai, int m, int rikiavimas);
-bool rikiavimasPaz(Studentas& s1, Studentas& s2);
-bool rikiavimasPavarde(Studentas& s1, Studentas& s2);
+void atvaizd(vector<Studentas>& studentai, int rikiavimas);
 bool rikiavimasVardu(Studentas& s1, Studentas& s2);
+bool rikiavimasPavarde(Studentas& s1, Studentas& s2);
+bool rikiavimasPaz(Studentas& s1, Studentas& s2);

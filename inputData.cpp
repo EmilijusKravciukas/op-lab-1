@@ -1,120 +1,94 @@
 #include "inputData.h"
 
-void ivestis(){
+void ivestis() {
     vector<Studentas> studentai;
 
-    bool loop = true;
-    unsigned int m = 0;
-    unsigned int n = 0;
     int cInput = 0;
-    while(cInput != 5){
-        cout<< "Pasirinkite įvedimo būdą:" << endl
-            << "(1) Duomenų įvedimas ranka" << endl
-            << "(2) Generuoti pažymius" << endl
-            << "(3) Generuoti vardą, pavardę ir pažymius" << endl
-            << "(4) Atvaizduoti duomenis" << endl
-            << "(5) Baigti darbą" << endl;
+    while(cInput != 5) {
+        std::cout<< "Pasirinkite įvedimo būdą:" << std::endl
+            << "(1) Duomenų įvedimas ranka" << std::endl
+            << "(2) Generuoti pažymius" << std::endl
+            << "(3) Generuoti vardą, pavardę ir pažymius" << std::endl
+            << "(4) Atvaizduoti duomenis" << std::endl
+            << "(5) Baigti darbą" << std::endl;
 
         cInput = intIvestis(1, 5);
 
-        if(cInput == 1){
-            n = 0;
-
-            Studentas studentasTemp;
-
+        if(cInput == 1) {
             bool ndLoop = true;
+            string line;
 
-            cout << "Įveskite studento vardą: ";
-            studentasTemp.vardas = stringIvestis();
-            cout << "Įveskite studento pavardę: ";
-            studentasTemp.pavarde = stringIvestis();
-            cout << "Įveskite studento namų darbų pažymius (0 - pereiti prie egzamino pažymio įvesties): ";
-            while(ndLoop){
+            std::cout << "Įveskite studento vardą: ";
+            line += stringIvestis() + " ";
+            std::cout << "Įveskite studento pavardę: ";
+            line += stringIvestis() + " ";
+            std::cout << "Įveskite studento namų darbų pažymius (0 - pereiti prie egzamino pažymio įvesties): ";
+            while(ndLoop) {
                 int temp = intIvestis(0, 10);
-                if(temp != 0){
-                    studentasTemp.nd.push_back(temp);
-                    n++;
+                if(temp != 0) {
+                    line += to_string(temp) + " ";
                 } else {
-                    cout << "Įveskite studento egzamino pažymį: ";
-                    studentasTemp.egz = intIvestis(1, 10);
-                    studentasTemp.n = n;
-                    studentasTemp.vid = rastiVid(studentasTemp);
-                    studentasTemp.mediana = rastiMed(studentasTemp);
+                    std::cout << "Įveskite studento egzamino pažymį: ";
+                    temp = intIvestis(1, 10);
+                    line += to_string(temp);
 
+                    stringstream ss(line);
+                    Studentas studentas(ss);
+                    studentai.push_back(studentas);
                     ndLoop = false;
                 }
             }
-            
-            studentai.push_back(studentasTemp);
+        } else if(cInput == 2) {
+            string line;
 
-            m++;
-        } else if(cInput == 2){
-            n = 0;
+            std::cout << "Įveskite studento vardą: ";
+            line += stringIvestis() + " ";
+            std::cout << "Įveskite studento pavardę: ";
+            line += stringIvestis() + " ";
 
-            Studentas studentasTemp;
-
-            cout << "Įveskite studento vardą: ";
-            studentai[m].vardas = stringIvestis();
-            cout << "Įveskite studento pavardę: ";
-            studentai[m].pavarde = stringIvestis();
-
-            n = randGen(1, 10);
-            studentasTemp.n = n;
-            for(int i = 0; i < n; i++){
-                studentasTemp.nd.push_back(randGen(1, 10));
+            for(int i = 0; i < randGen(1, 10); i++) {
+                line += to_string(randGen(1, 10));
             }
+            line += to_string(randGen(1, 10));
 
-            studentasTemp.egz = randGen(1, 10);
-            studentasTemp.n = n;
-            studentasTemp.vid = rastiVid(studentasTemp);
-            studentasTemp.mediana = rastiMed(studentasTemp);
+            stringstream ss(line);
+            Studentas studentas(ss);
+            studentai.push_back(studentas);
+        } else if(cInput == 3) {
+            string line;
 
-            studentai.push_back(studentasTemp);
+            vector<std::string> vardai = {"Rokas", "Karolis", "Nojus", "Edgaras", "Martynas", "Gytis", "Justas"};
+            vector<std::string> pavardes = {"Kazlauskas", "Stankevicius", "Petrauskas", "Jankauskas", "Zukauskas", "Butkus", "Balciunas"};
 
-            m++;
-        } else if(cInput == 3){
-            n = 0;
-            
-            Studentas studentasTemp;
+            line += vardai[randGen(0, 6)];
+            line += pavardes[randGen(0, 6)];
 
-            vector<string> vardai = {"Rokas", "Karolis", "Nojus", "Edgaras", "Martynas", "Gytis", "Justas"};
-            vector<string> pavardes = {"Kazlauskas", "Stankevicius", "Petrauskas", "Jankauskas", "Zukauskas", "Butkus", "Balciunas"};
-
-            studentasTemp.vardas = vardai[randGen(0, 6)];
-            studentasTemp.pavarde = pavardes[randGen(0, 6)];
-
-            n = randGen(1, 10);
-            studentasTemp.n = n;
-            for(int i = 0; i < n; i++){
-                studentasTemp.nd.push_back(randGen(1, 10));
+            for(int i = 0; i < randGen(1, 10); i++) {
+                line += to_string(randGen(1, 10));
             }
+            line += to_string(randGen(1, 10));
 
-            studentasTemp.egz = randGen(1, 10);
-            studentasTemp.n = n;
-            studentasTemp.vid = rastiVid(studentasTemp);
-            studentasTemp.mediana = rastiMed(studentasTemp);
-
-            studentai.push_back(studentasTemp);
-
-            m++;
-        } else if(cInput == 4){
-            cout<<"Pasirinkite rikiavimo būdą: " << endl
-                <<"(1) Pagal studento vardą" << endl
-                <<"(2) Pagal studento pavarde" << endl
-                <<"(3) Pagal studento galutinį pažymį" << endl;
+            stringstream ss(line);
+            Studentas studentas(ss);
+            studentai.push_back(studentas);
+        } else if(cInput == 4) {
+            std::cout<<"Pasirinkite rikiavimo būdą: " << std::endl
+                <<"(1) Pagal studento vardą" << std::endl
+                <<"(2) Pagal studento pavarde" << std::endl
+                <<"(3) Pagal studento galutinį pažymį" << std::endl;
 
             int rikiavimoBudas = intIvestis(1, 3);
 
-            cout<<"Pasirinkite atvaizdavimo buda: " << endl
-                <<"(1) Komandineje eiluteje" << endl
-                <<"(2) Issaugoti i du failus (rikiavimas pagal pasiekimus)" << endl;
+            std::cout<<"Pasirinkite atvaizdavimo buda: " << std::endl
+                <<"(1) Komandineje eiluteje" << std::endl
+                <<"(2) Issaugoti i du failus (rikiavimas pagal pasiekimus)" << std::endl;
 
             int atvaizdBudas = intIvestis(1, 2);
             
-            if(atvaizdBudas == 2){
-                studSort(studentai, m, rikiavimoBudas);
+            if(atvaizdBudas == 2) {
+                studSort(studentai, rikiavimoBudas);
             } else {
-                atvaizd(studentai, m, rikiavimoBudas);
+                atvaizd(studentai, rikiavimoBudas);
             }
         }
     }
