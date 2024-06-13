@@ -28,11 +28,11 @@ Keep in mind that this comes with a slight downgrade in optimization.
 Here are the comparison tables for 100k and 1m sized testing data files:
 
 100k | -01 | -02 | -03
---- | --- | ---
+--- | --- | --- | ---
 class 1.1 | 1.145s | 1.01s | 1.008s
 struct 1.0 | 1.044s | 0.965s | 1.126s
 
 1m | -01 | -02 | -03
- --- | --- | ---
+ --- | --- | --- | ---
 class 1.1 | 10.107s | 9.978s | 10.022s
 struct 1.0 | 9.529s | 9.562s | 9.603s
