@@ -37,7 +37,7 @@ struct 1.0 | 1.044s | 0.965s | 1.126s
 class 1.1 | 10.107s | 9.978s | 10.022s
 struct 1.0 | 9.529s | 9.562s | 9.603s
 
-  | -01 Executable Size | -02 Executable Size | -03 Executable Size |
+    | -01 Executable Size | -02 Executable Size | -03 Executable Size |
  --- | --- | --- | ---
 class 1.1 | 215KB | 213KB | 223KB
 struct 1.0 | 218KB | 209KB | 218KB
