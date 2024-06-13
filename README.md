@@ -26,13 +26,14 @@ Vardas and Pavarde refer to Name and Surname values, ND(number) shows the homewo
 The Studentas struct has now been made a separate class, which ensures a more cohesive code structure and covers several undefined behaviour and variable privacy issues.
 Keep in mind that this comes with a slight downgrade in optimization.
 Here are the comparison tables for 100k and 1m sized testing data files:
-
-100k | -01 | -02 | -03
+File Size | -01 Executable Size | -02 Executable Size | -03 Executable Size |
 --- | --- | --- | ---
+100k | -01 | -02 | -03
 class 1.1 | 1.145s | 1.01s | 1.008s
 struct 1.0 | 1.044s | 0.965s | 1.126s
 
-1m | -01 | -02 | -03
+File Size | -01 Executable Size | -02 Executable Size | -03 Executable Size |
  --- | --- | --- | ---
+1m | -01 | -02 | -03
 class 1.1 | 10.107s | 9.978s | 10.022s
 struct 1.0 | 9.529s | 9.562s | 9.603s
