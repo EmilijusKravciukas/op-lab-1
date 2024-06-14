@@ -22,5 +22,18 @@ Vardas2                 Pavarde2                      9         7         9     
 ...                                                                                  
 ```
 Vardas and Pavarde refer to Name and Surname values, ND(number) shows the homework mark along with its iterator, Egz. refers to the exam mark. Number of homework marks can be varied indefinitely, yet they cannot be equal to zero. Exam mark is required.
-## CHANGES IN VERSION 1.5
-Implemented an abstract class Zmogus that Studentas class is derived from.
+## CHANGES IN VERSION 3.0
+Created custom Vector container with RoF implementation, tested by Doctest framework.
+Optimization comparison table using simple storing variables with push_back script:
+
+|| 100k variables | 1m variables | 10m variables | 100m variables
+|--- | --- | --- | --- | ---
+| Vector | 1ms | 11ms | 122ms | 1226ms
+| std::vector | 0ms | 6ms | 111ms | 1241ms
+
+Code execution time comparison:
+
+|| 100k variables | 1m variables 
+|--- | --- | --- 
+| Vector (3.0) | 1.093s | 9.869s
+| std::vector (2.0) | 1.145s | 9.978s 
