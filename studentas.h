@@ -8,11 +8,10 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iomanip>
+#include "zmogus.h"
 
-class Studentas {
+class Studentas : public Zmogus {
     private:
-        std::string vardas_;
-        std::string pavarde_;
         int n_;
         std::vector<int> nd_;
         int egz_;
@@ -20,10 +19,6 @@ class Studentas {
         double mediana_;
 
     public:
-        Studentas(std::istream& is) {
-            readStudent(is);
-        }
-
         friend std::ostream& operator<<(std::ostream& os, const Studentas& studentas) {
             os << std::endl << std::left << std::setw(20) << studentas.vardas_ << std::left << std::setw(20) << studentas.pavarde_ << std::fixed
             << std::setprecision(2) << std::left << std::setw(20) << (studentas.vid_ * 0.4 + double(studentas.egz_) * 0.6);
@@ -37,18 +32,25 @@ class Studentas {
             return is;
         }
 
+        Studentas(std::istream& is) {
+            readStudent(is);
+        }
+
         Studentas(const std::string& vardas, const std::string& pavarde, int n, const std::vector<int>& nd, int egz)
-        : vardas_(vardas), pavarde_(pavarde), n_(n), nd_(nd), egz_(egz), vid_(0), mediana_(0) {
+        : Zmogus(vardas, pavarde), n_(n), nd_(nd), egz_(egz), vid_(0), mediana_(0) {
+            this->vardas_ = vardas;
+            this->pavarde_ = pavarde;
+
             calcSetVid();
             calcSetMediana();
         }
 
-        Studentas() : vardas_(""), pavarde_(""), n_(0), egz_(0), vid_(0), mediana_(0) {}
+        Studentas() : Zmogus("", ""), n_(0), egz_(0), vid_(0), mediana_(0) {}
 
         ~Studentas() = default;
 
         Studentas(const Studentas& other)
-        : vardas_(other.vardas_), pavarde_(other.pavarde_), n_(other.n_), nd_(other.nd_), egz_(other.egz_),
+        : Zmogus(other), n_(other.n_), nd_(other.nd_), egz_(other.egz_),
         vid_(other.vid_), mediana_(other.mediana_) {}
 
         Studentas& operator=(const Studentas& other) {
@@ -65,7 +67,7 @@ class Studentas {
         }
 
         Studentas(Studentas&& other) noexcept
-            : vardas_(std::move(other.vardas_)), pavarde_(std::move(other.pavarde_)), n_(other.n_), nd_(std::move(other.nd_)), egz_(other.egz_),
+            : Zmogus(std::move(other)), n_(other.n_), nd_(std::move(other.nd_)), egz_(other.egz_),
             vid_(other.vid_), mediana_(other.mediana_) {
             other.n_ = 0;
             other.egz_ = 0;
@@ -114,7 +116,7 @@ class Studentas {
             return is;
         }
 
-        void calcSetVid() {
+        void calcSetVid() override {
             vid_ = 0;
             for(int i = 0; i < n_; i++) {
                 vid_ += nd_[i];

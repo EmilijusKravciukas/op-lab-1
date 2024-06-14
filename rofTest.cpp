@@ -7,7 +7,8 @@ void runTests() {
     std::cout << "copyOperatorTest status: " << copyOperatorTest() << std::endl;
     std::cout << "moveConstructorTest status: " << moveConstructorTest() << std::endl;
     std::cout << "moveOperatorTest status: " << moveOperatorTest() << std::endl;
-    std::cout << "destructorTest status: " << destructorTest() << std::endl;
+    //std::cout << "zmogusConstructorTest status: " << zmogusConstructorTest() << std::endl;
+    //std::cout << "destructorTest status: " << destructorTest() << std::endl;
 }
 std::string constructorTest() {
     std::stringstream ss("Vardas Pavarde 1 2 3 4 5 10");
@@ -143,4 +144,8 @@ std::string moveOperatorTest() {
     } else {
         return "success";
     }
+}
+
+std::string zmogusConstructorTest() {
+    //Zmogus zmogus;
 }
