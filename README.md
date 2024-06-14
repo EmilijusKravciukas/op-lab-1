@@ -22,5 +22,5 @@ Vardas2                 Pavarde2                      9         7         9     
 ...                                                                                  
 ```
 Vardas and Pavarde refer to Name and Surname values, ND(number) shows the homework mark along with its iterator, Egz. refers to the exam mark. Number of homework marks can be varied indefinitely, yet they cannot be equal to zero. Exam mark is required.
-## CHANGES IN VERSION 1.5
-Implemented an abstract class Zmogus that Studentas class is derived from.
+## CHANGES IN VERSION 2.0
+Implemented Doctest based unit testing for the Studentas class. Created Doxygen documentation.
