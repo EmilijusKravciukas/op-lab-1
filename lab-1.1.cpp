@@ -8,12 +8,15 @@
 #include "inputData.h"
 #include "studentas.h"
 #include "fileGen.h"
+#include "rofTest.h"
 
 using namespace std;
 
 int main(){
     srand(time(0));
     system("chcp 65001  > nul");
+
+    //runTests();
 
     int cInput = 0;
 
