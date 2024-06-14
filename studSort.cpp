@@ -3,9 +3,9 @@
 #define OPENING_ERROR "Nepavyko atidaryti failo"
 #define WRITING_ERROR "Nepavyko irasyti duomenu i faila"
 
-void studSort(vector<Studentas>& studentai, int rikiavimas){
+void studSort(Vector<Studentas>& studentai, int rikiavimas){
 
-    vector<Studentas> studentaiGeri = studentai;
+    Vector<Studentas> studentaiGeri = studentai;
 
     auto globalTStart = chrono::steady_clock::now();
     auto tStart = chrono::steady_clock::now();
@@ -16,7 +16,7 @@ void studSort(vector<Studentas>& studentai, int rikiavimas){
     auto tDuration = chrono::duration_cast<chrono::milliseconds>(tEnd - tStart);
     cout << "Vektorio rusiavimas mazejimo tvarka uztruko: " << double(tDuration.count())/1000 << " sekundziu" << endl;
 
-    vector<Studentas> studentaiBlogi;
+    Vector<Studentas> studentaiBlogi;
 
     const double epsilon = 1e-9;
 

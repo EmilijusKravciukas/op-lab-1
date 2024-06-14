@@ -1,14 +1,14 @@
 #pragma once
 
 #include <fstream>
-#include <vector>
 #include "studentas.h"
 #include <iomanip>
 #include <algorithm>
 #include <iostream>
 #include "writeResult.h"
 #include <chrono>
+#include "vector_custom.h"
 
 using namespace std;
 
-void studSort(vector<Studentas>& studentai,  int rikiavimas);
+void studSort(Vector<Studentas>& studentai,  int rikiavimas);
