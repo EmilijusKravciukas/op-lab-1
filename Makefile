@@ -1,24 +1,49 @@
+# Define the compiler and the flags
 CXX = g++
-CXXFLAGS = -O2
+CXXFLAGS = -std=c++17 -Wall -Wextra -g
 
-TARGET = StudApp.exe
-
+# Define the source files
 SRC = $(wildcard *.cpp)
 
-OBJ = $(SRC:.cpp=.o)
+# Define the source files for main and test
+SRC_MAIN = $(filter-out tests.cpp, $(SRC))
+SRC_TEST = tests.cpp
 
-all: $(TARGET)
+# Define the header files
+HEADERS = $(wildcard *.h)
 
-$(TARGET): $(OBJ)
+# Define the object files
+OBJ_MAIN = $(SRC_MAIN:.cpp=.o)
+OBJ_TEST = $(SRC_TEST:.cpp=.o)
+
+# Define the executable files
+EXE_MAIN = StudApp.exe
+EXE_TEST = TestApp.exe
+
+# Default target: build both executables
+all: $(EXE_MAIN) $(EXE_TEST)
+
+# Rule to build the main executable
+$(EXE_MAIN): $(OBJ_MAIN)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-%.o: %.cpp
+# Rule to build the test executable
+$(EXE_TEST): $(OBJ_TEST)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+# Rule to build object files
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# Clean up build files
 clean:
-	rm -f $(TARGET) $(OBJ)
+	rm -f $(OBJ_MAIN) $(OBJ_TEST) $(EXE_MAIN) $(EXE_TEST)
 
-run: $(TARGET)
-	./$(TARGET)
+test: $(EXE_TEST)
+	./$(EXE_TEST)
 
-.PHONY: all clean run
+run: $(EXE_MAIN)
+	./$(EXE_MAIN)
+
+# Phony targets
+.PHONY: all clean test run

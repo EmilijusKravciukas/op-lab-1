@@ -2,10 +2,14 @@
 
 #include <string>
 
+/**
+         * @brief Abstract class that Studentas is derived from
+         */
+
 class Zmogus {
     protected:
-        std::string vardas_;
-        std::string pavarde_;
+        std::string vardas_; ///< Name 
+        std::string pavarde_; ///< Surname 
     public:
         /** 
         * @brief Default constructor for Zmogus class

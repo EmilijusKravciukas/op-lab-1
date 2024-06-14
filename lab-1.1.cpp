@@ -8,7 +8,6 @@
 #include "inputData.h"
 #include "studentas.h"
 #include "fileGen.h"
-#include "rofTest.h"
 
 using namespace std;
 
