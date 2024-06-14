@@ -15,6 +15,8 @@ int main(){
     srand(time(0));
     system("chcp 65001  > nul");
 
+    // runTests();
+
     int cInput = 0;
 
     while(cInput != 4){

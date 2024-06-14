@@ -42,27 +42,6 @@ void duomSkait(){
             stringstream ss(line);
             Studentas studentas(ss);
             studentai.push_back(studentas);
-            // Studentas studentasTemp;
-            // ss >> studentasTemp.vardas >> studentasTemp.pavarde;
-
-            // studentai.push_back(studentasTemp);
-
-            // int n = 0;
-
-            // int num;
-
-            // while(ss >> num){
-            //     n++;
-            //     studentai[m].nd.push_back(num);
-            // }
-
-            // studentai[m].egz = studentai[m].nd[n-1];
-            // studentai[m].nd.pop_back();
-            // studentai[m].n = n;
-            // studentai[m].vid = rastiVid(studentai, m);
-            // studentai[m].mediana = rastiMed(studentai, m);
-
-            // m++;
         }
 
         auto tEnd = chrono::steady_clock::now();
