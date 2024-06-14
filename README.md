@@ -8,11 +8,9 @@ Simple console based application that allows the student data (read from file an
 - Random student and mark generation for testing purposes
 ## USAGE GUIDE
 ### 1. Download the latest release
-After downloading the latest release extract it anywhere.
-### 2. Build the solution
-You will have to use a c++ compiler. Import the extracted folder and press Build and Run button. Alternatively use the provided Makefile (you can also change the optimization flags, see CHANGES IN VERSION 1.1).
-### 3. Using the application
-Upon building and launching the program you will be presented with a console interface. Input numbers (1 to 4 in the starting menu) to navigate the interface.
+Download the latest release with setup file. Launch the setup and the installation wizard will walk you through. (Optionally you can still download and build the solution yourself, look for the same version release with source files).
+### 2. Using the application
+Upon installing and launching the program you will be presented with a console interface. Input numbers (1 to 4 in the starting menu) to navigate the interface.
 ## FORMATTING
 The program only reads data files that follow the following formatting:
 ```
@@ -37,3 +35,4 @@ Code execution time comparison:
 |--- | --- | --- 
 | Vector (3.0) | 1.093s | 9.869s
 | std::vector (2.0) | 1.145s | 9.978s 
+
