@@ -3,7 +3,7 @@
 #define OPENING_ERROR "Nepavyko atidaryti failo"
 #define WRITING_ERROR "Nepavyko irasyti duomenu i faila"
 
-void studSort(vector<Studentas>& studentai, unsigned int m, int rikiavimas){
+void studSort(vector<Studentas>& studentai, int rikiavimas){
 
     vector<Studentas> studentaiGeri = studentai;
 
@@ -22,9 +22,9 @@ void studSort(vector<Studentas>& studentai, unsigned int m, int rikiavimas){
 
     tStart = chrono::steady_clock::now();
 
-    for(int i = 0; i < m; i++){
-        if((studentaiGeri[i].vid * 0.4 + double(studentaiGeri[i].egz) * 0.6) < 5.0 - epsilon){
-            for(int j = i; j < m; j++){
+    for(int i = 0; i < studentai.size(); i++){
+        if((studentaiGeri[i].vid() * 0.4 + double(studentaiGeri[i].egz()) * 0.6) < 5.0 - epsilon){
+            for(int j = i; j < studentai.size(); j++){
                 studentaiBlogi.push_back(studentaiGeri[j]);
             }
             studentaiGeri.erase(studentaiGeri.begin() + i, studentaiGeri.end());
@@ -64,7 +64,7 @@ void studSort(vector<Studentas>& studentai, unsigned int m, int rikiavimas){
         }
 
         for (Studentas studentas : studentaiBlogi){
-            if(!(LF << endl << left << setw(20) << studentas.vardas << left << setw(20) << studentas.pavarde << fixed << setprecision(2) << left << setw(20) << (studentas.vid * 0.4 + double(studentas.egz) * 0.6))){
+            if(!(LF << endl << left << setw(20) << studentas.vardas() << left << setw(20) << studentas.pavarde() << fixed << setprecision(2) << left << setw(20) << (studentas.vid() * 0.4 + double(studentas.egz()) * 0.6))){
                 throw runtime_error(WRITING_ERROR);
             }
         }
@@ -90,7 +90,7 @@ void studSort(vector<Studentas>& studentai, unsigned int m, int rikiavimas){
         }
         
         for (Studentas studentas : studentaiGeri){
-            if(!(MF << endl << left << setw(20) << studentas.vardas << left << setw(20) << studentas.pavarde << fixed << setprecision(2) << left << setw(20) << (studentas.vid * 0.4 + double(studentas.egz) * 0.6))){
+            if(!(MF << endl << left << setw(20) << studentas.vardas() << left << setw(20) << studentas.pavarde() << fixed << setprecision(2) << left << setw(20) << (studentas.vid() * 0.4 + double(studentas.egz()) * 0.6))){
                 throw runtime_error(WRITING_ERROR);
             }
         }
