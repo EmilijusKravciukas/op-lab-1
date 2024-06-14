@@ -2,7 +2,7 @@
 #include <string>
 #include <time.h>
 #include <locale.h>
-#include <vector>
+#include "vector_custom.h"
 #include "fileRead.h"
 #include "inputCheck.h"
 #include "inputData.h"
@@ -14,8 +14,6 @@ using namespace std;
 int main(){
     srand(time(0));
     system("chcp 65001  > nul");
-
-    // runTests();
 
     int cInput = 0;
 
@@ -36,7 +34,6 @@ int main(){
             generateFile();
         }
     }
-    
 
     return 0;
 }

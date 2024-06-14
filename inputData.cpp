@@ -1,7 +1,7 @@
 #include "inputData.h"
 
 void ivestis() {
-    vector<Studentas> studentai;
+    Vector<Studentas> studentai;
 
     int cInput = 0;
     while(cInput != 5) {

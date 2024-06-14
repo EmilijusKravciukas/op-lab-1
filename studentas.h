@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -9,6 +8,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "zmogus.h"
+#include "vector_custom.h"
 
 /**
  * @brief Class that represents Studentas
@@ -17,7 +17,7 @@
 class Studentas : public Zmogus {
     private:
         int n_; ///< Homework grades count
-        std::vector<int> nd_; ///< Homework grades
+        Vector<int> nd_; ///< Homework grades
         int egz_; ///< Exam grade
         double vid_; ///< Homework grades average
         double mediana_; ///< Homework grades mediana
@@ -52,7 +52,7 @@ class Studentas : public Zmogus {
         /**
          * @brief Parametrized constructor
          */
-        Studentas(const std::string& vardas, const std::string& pavarde, int n, const std::vector<int>& nd, int egz)
+        Studentas(const std::string& vardas, const std::string& pavarde, int n, const Vector<int>& nd, int egz)
         : Zmogus(vardas, pavarde), n_(n), nd_(nd), egz_(egz), vid_(0), mediana_(0) {
             this->vardas_ = vardas;
             this->pavarde_ = pavarde;
@@ -136,7 +136,7 @@ class Studentas : public Zmogus {
          inline double vid() const { return vid_; } ///< Getter for grade average.
          inline double mediana() const { return mediana_; } ///< Getter for grade mediana.
          inline int n() const { return n_; } ///< Getter for homework grade count.
-         inline const std::vector<int>& nd() const { return nd_; } ///< Getter for homework grades.
+         inline const Vector<int>& nd() const { return nd_; } ///< Getter for homework grades.
         
         /**
          * @brief Assigns values to Studentas object from istream

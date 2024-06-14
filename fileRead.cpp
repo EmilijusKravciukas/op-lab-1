@@ -1,7 +1,7 @@
 #include "fileRead.h"
 
 void duomSkait(){
-    vector<Studentas> studentai;
+    Vector<Studentas> studentai;
 
     try{
         string command = "dir *.txt 2>" "NUL";
