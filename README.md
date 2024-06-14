@@ -22,22 +22,15 @@ Vardas2                 Pavarde2                      9         7         9     
 ...                                                                                  
 ```
 Vardas and Pavarde refer to Name and Surname values, ND(number) shows the homework mark along with its iterator, Egz. refers to the exam mark. Number of homework marks can be varied indefinitely, yet they cannot be equal to zero. Exam mark is required.
-## CHANGES IN VERSION 1.1
-The Studentas struct has now been made a separate class, which ensures a more cohesive code structure and covers several undefined behaviour and variable privacy issues. It is overall a more stable release.
-Keep in mind however that those changes come with a slight decrease in execution time.
-Here are the comparison tables for 100k and 1m sized testing data files with different optimization flags:
+## CHANGES IN VERSION 1.2
+Implemented Rule of Five for the new Studentas class (testing included). Added overloaded << and >> functions for Studentas class. Optimized input and output related code.
+Optimization showcase in comparison to 1.1 version (optimization flag is -02 as it shows the best average result).
 
-|100k Lines Data File | -01 Code Execution Time | -02 Code Execution Time | -03 Code Execution Time |
-|--- | --- | --- | ---
-|class 1.1 | 1.145s | 1.01s | 1.008s
-|struct 1.0 | 1.044s | 0.965s | 1.126s
+|1m Lines Data File | Code Execution Time |
+| --- | --- |
+|v1.1 | 9.978s |
+|v1.2 | 9.529s |
 
-|1m Lines Data File | -01 Code Execution Time | -02 Code Execution Time | -03 Code Execution Time |
-| --- | --- | --- | ---
-|class 1.1 | 10.107s | 9.978s | 10.022s
-|struct 1.0 | 9.529s | 9.562s | 9.603s
-
-|| -01 Executable Size | -02 Executable Size | -03 Executable Size |
-| --- | --- | --- | ---
-|class 1.1 | 215KB | 213KB | 223KB
-|struct 1.0 | 218KB | 209KB | 218KB
+The overloaded operators serve to optimize and simplify the input and output code.
+The output operator '<<' coupled with an object of Studentas class outputs a formatted line, ready for writing into sorted file or console output.
+The input operator '>>' serves as a shortcut to constructor, mainly serving for readability.
