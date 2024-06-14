@@ -5,6 +5,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include "zmogus.h"
 
 void runTests();
 std::string constructorTest();
@@ -14,3 +15,4 @@ std::string copyConstructorTest();
 std::string copyOperatorTest();
 std::string moveConstructorTest();
 std::string moveOperatorTest();
+std::string zmogusConstructorTest();

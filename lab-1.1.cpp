@@ -16,7 +16,7 @@ int main(){
     srand(time(0));
     system("chcp 65001  > nul");
 
-    //runTests();
+    // runTests();
 
     int cInput = 0;
 
