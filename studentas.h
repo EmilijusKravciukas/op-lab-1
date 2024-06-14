@@ -7,23 +7,90 @@
 #include <fstream>
 #include <stdexcept>
 #include <algorithm>
+#include <iomanip>
 
 class Studentas {
     private:
         std::string vardas_;
         std::string pavarde_;
-        int n_ = 0;
+        int n_;
         std::vector<int> nd_;
         int egz_;
-        double vid_ = 0;
-        double mediana_ = 0;
+        double vid_;
+        double mediana_;
 
     public:
-        Studentas() : egz_(0) {}
         Studentas(std::istream& is) {
             readStudent(is);
         }
-        ~Studentas() {};
+
+        friend std::ostream& operator<<(std::ostream& os, const Studentas& studentas) {
+            os << std::endl << std::left << std::setw(20) << studentas.vardas_ << std::left << std::setw(20) << studentas.pavarde_ << std::fixed
+            << std::setprecision(2) << std::left << std::setw(20) << (studentas.vid_ * 0.4 + double(studentas.egz_) * 0.6);
+            
+            return os;
+        }
+
+        friend std::istream& operator>>(std::istream& is, Studentas& studentas) {
+            studentas.readStudent(is);
+
+            return is;
+        }
+
+        Studentas(const std::string& vardas, const std::string& pavarde, int n, const std::vector<int>& nd, int egz)
+        : vardas_(vardas), pavarde_(pavarde), n_(n), nd_(nd), egz_(egz), vid_(0), mediana_(0) {
+            calcSetVid();
+            calcSetMediana();
+        }
+
+        Studentas() : vardas_(""), pavarde_(""), n_(0), egz_(0), vid_(0), mediana_(0) {}
+
+        ~Studentas() = default;
+
+        Studentas(const Studentas& other)
+        : vardas_(other.vardas_), pavarde_(other.pavarde_), n_(other.n_), nd_(other.nd_), egz_(other.egz_),
+        vid_(other.vid_), mediana_(other.mediana_) {}
+
+        Studentas& operator=(const Studentas& other) {
+            if (this != &other) {
+                vardas_ = other.vardas_;
+                pavarde_ = other.pavarde_;
+                n_ = other.n_;
+                nd_ = other.nd_;
+                egz_ = other.egz_;
+                vid_ = other.vid_;
+                mediana_ = other.mediana_;
+            }
+            return *this;
+        }
+
+        Studentas(Studentas&& other) noexcept
+            : vardas_(std::move(other.vardas_)), pavarde_(std::move(other.pavarde_)), n_(other.n_), nd_(std::move(other.nd_)), egz_(other.egz_),
+            vid_(other.vid_), mediana_(other.mediana_) {
+            other.n_ = 0;
+            other.egz_ = 0;
+            other.vid_ = 0;
+            other.mediana_ = 0;
+        }
+
+        Studentas& operator=(Studentas&& other) noexcept {
+            if (this != &other) {
+                vardas_ = std::move(other.vardas_);
+                pavarde_ = std::move(other.pavarde_);
+                n_ = other.n_;
+                nd_ = std::move(other.nd_);
+                egz_ = other.egz_;
+                vid_ = other.vid_;
+                mediana_ = other.mediana_;
+
+                other.n_ = 0;
+                other.egz_ = 0;
+                other.vid_ = 0;
+                other.mediana_ = 0;
+            }
+            return *this;
+        }
+
         inline std::string vardas() const { return vardas_; }
         inline std::string pavarde() const { return pavarde_; }
         inline int egz() const { return egz_; }
@@ -31,6 +98,7 @@ class Studentas {
         inline double mediana() const { return mediana_; }
 
         std::istream& readStudent(std::istream& is) {
+            n_ = 0;
             is >> vardas_ >> pavarde_;
             int num;
             while(is >> num){
@@ -47,6 +115,7 @@ class Studentas {
         }
 
         void calcSetVid() {
+            vid_ = 0;
             for(int i = 0; i < n_; i++) {
                 vid_ += nd_[i];
             }

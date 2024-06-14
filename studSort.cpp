@@ -64,7 +64,7 @@ void studSort(vector<Studentas>& studentai, int rikiavimas){
         }
 
         for (Studentas studentas : studentaiBlogi){
-            if(!(LF << endl << left << setw(20) << studentas.vardas() << left << setw(20) << studentas.pavarde() << fixed << setprecision(2) << left << setw(20) << (studentas.vid() * 0.4 + double(studentas.egz()) * 0.6))){
+            if(!(LF << studentas)){
                 throw runtime_error(WRITING_ERROR);
             }
         }
@@ -90,7 +90,7 @@ void studSort(vector<Studentas>& studentai, int rikiavimas){
         }
         
         for (Studentas studentas : studentaiGeri){
-            if(!(MF << endl << left << setw(20) << studentas.vardas() << left << setw(20) << studentas.pavarde() << fixed << setprecision(2) << left << setw(20) << (studentas.vid() * 0.4 + double(studentas.egz()) * 0.6))){
+            if(!(MF << studentas)){
                 throw runtime_error(WRITING_ERROR);
             }
         }

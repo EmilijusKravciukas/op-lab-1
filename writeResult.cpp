@@ -21,13 +21,10 @@ void atvaizd(vector<Studentas>& studentai, int rikiavimas){
         sort(studentai.begin(), studentai.end(), rikiavimasPaz);
     }
 
-    cout << left << setw(20) << "Vardas" << left << setw(20) << "Pavardė" << left << setw(20) << "Galutinis (Vid.)" << left << setw(20) << "Galutinis (Med.)" << endl;
+    cout << left << setw(20) << "Vardas" << left << setw(20) << "Pavardė" << left << setw(20) << "Galutinis (Vid.)" << endl;
     cout << "---------------------------------------------------------------------------" << endl;
     cout << setprecision(2) << fixed;
     for(int i = 0; i < studentai.size(); i++){
-        cout << left << setw(20) << studentai[i].vardas()
-            << left << setw(20) << studentai[i].pavarde()
-            << left << setw(20) << studentai[i].vid() * 0.4 + double(studentai[i].egz()) * 0.6
-            << left << setw(20) << studentai[i].mediana() * 0.4 + double(studentai[i].egz()) * 0.6 << endl;
+        cout << studentai[i];
     }
 }
